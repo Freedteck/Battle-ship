@@ -14,7 +14,7 @@ function Gameboard() {
 
   function placeShip(ship, row, col) {
     for (let i = 0; i < ship.getLength(); i++) {
-      ships.push({ ship, row: row + i, col });
+      ships.push({ ship, row: row + i <= 9 ? row+i : 9, col });
     }
   }
 
@@ -30,15 +30,10 @@ function Gameboard() {
   }
 
   function checkAllShips() {
-    const isSunk = ships.every((shipData) => shipData.ship.isSunk());
-
-    if (isSunk) {
-      return true;
-    }
-    return false;
+    return ships.every((shipData) => shipData.ship.isSunk());
   }
 
-  return { placeShip, receiveAttack , checkAllShips};
+  return { placeShip, receiveAttack, checkAllShips };
 }
 
 module.exports = { Gameboard };

@@ -13,8 +13,8 @@ test("This Ship has received Attack", () => {
 test("The ship is hit", () => {
   const ship = Ship(3);
   const game = Gameboard();
-  game.placeShip(ship, 0, 0);
-  game.receiveAttack(1, 0);
+  game.placeShip(ship, 8, 0);
+  game.receiveAttack(9, 0);
   expect(ship.getHits()).toBe(1);
 });
 
