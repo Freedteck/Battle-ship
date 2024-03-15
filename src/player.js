@@ -7,10 +7,18 @@
  */
 
 function Player(turn) {
+  const targetedCoordinates = [];
+
   function attack(gameBoard, x, y) {
-    if (turn === "computer" && !x && !y) {
-      x = Math.floor(Math.random() * 10);
-      y = Math.floor(Math.random() * 10);
+    if (turn === "computer") {
+      do {
+        x = Math.floor(Math.random() * 10);
+        y = Math.floor(Math.random() * 10);
+      } while (
+        targetedCoordinates.some((coord) => coord[0] === x && coord[1] === y)
+      );
+
+      targetedCoordinates.push([x, y]);
     }
 
     return gameBoard.receiveAttack(x, y);
